@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { connect } from 'react-redux';
+import {fetchAssignments} from './actions/fetchAssignments'
 
 class App extends React.Component {
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/teachers/1/assignments')
-    .then(res => res.json())
-    .then(data => console.log(data)) 
+    this.props.fetchAssignments({type: 'FETCH_ASSIGNMENTS'})
   }
 
   render() {
@@ -18,4 +18,9 @@ class App extends React.Component {
   }
 }
 
-export default App
+//mapStateToProps: get value of store
+//mapDispatchToProps: add something to store
+
+export default connect(null, {fetchAssignments})(App);
+
+// the connect function calls store.dispatch with the action object
