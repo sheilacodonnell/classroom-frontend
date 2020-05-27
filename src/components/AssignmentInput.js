@@ -19,6 +19,11 @@ class AssignmentInput extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.addAssignment(this.state)
+    this.setState({
+      title: '',
+      due_date: '',
+      description: ''
+    })
   }
 
   render() {
