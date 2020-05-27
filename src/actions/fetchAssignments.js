@@ -3,9 +3,16 @@ export function fetchAssignments(action) {
   // what we dispatch is the action object
   // dispatches to the reducer
 
-  return action
-
-  // fetch('http://localhost:3000/api/teachers/1/assignments')
-  // .then(res => res.json())
-  // .then(data => console.log(data)) 
+  return (dispatch) => {
+    //this fetch request return a promise that we'll get a response eventually
+  fetch('http://localhost:3000/api/teachers/1/assignments')
+  // once that promise is resolved the response from our request is passed into this first then, and its converted to json
+  .then(res => res.json())
+  // that json is passed as the first argument to the next then
+  // we then dispatch this action object to the reducer
+  .then(assignments => dispatch({
+    type: 'FETCH_ASSIGNMENTS',
+    payload: assignments
+  }))
+  }
 }
