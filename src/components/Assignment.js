@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 const Assignment = (props) => {
 
@@ -6,6 +7,7 @@ const Assignment = (props) => {
 
   return (
     <div>
+      {assignment ? null : <Redirect to='/assignments'/>}
       {assignment ? assignment.title : null} - 
       {assignment ? assignment.due_date : null}
     </div>

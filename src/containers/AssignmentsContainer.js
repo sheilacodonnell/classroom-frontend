@@ -4,7 +4,7 @@ import Assignments from '../components/Assignments';
 import Assignment from '../components/Assignment';
 import {fetchAssignments} from '../actions/fetchAssignments'
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class AssignmentsContainer extends React.Component {
 
@@ -15,9 +15,12 @@ class AssignmentsContainer extends React.Component {
   render() {
     return(
       <div>
-        <Route path='/assignments/new' component={AssignmentInput}/>
-        <Route exact path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments} />} />
-        <Route exact path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments} />} />
+        <Switch>
+          {/* // returns the first route that matches that path */}
+          <Route path='/assignments/new' component={AssignmentInput}/>
+          <Route path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments} />} />
+          <Route path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments} />} />
+        </Switch>
       </div>
     )
   }
