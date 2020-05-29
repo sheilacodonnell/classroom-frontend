@@ -21,6 +21,7 @@ class AssignmentsContainer extends React.Component {
           <Route path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments} />} />
           <Route path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments} />} />
         </Switch>
+        <AssignmentInput />
       </div>
     )
   }
