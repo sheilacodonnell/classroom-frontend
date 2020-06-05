@@ -18,10 +18,10 @@ class AssignmentsContainer extends React.Component {
         <Switch>
           {/* // returns the first route that matches that path */}
           <Route path='/assignments/new' component={AssignmentInput}/>
-          <Route path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments} />} />
-          <Route path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments} />} />
+          <Route path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
+          <Route path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
         </Switch>
-        <AssignmentInput />
+        {/* <AssignmentInput /> */}
       </div>
     )
   }
@@ -29,7 +29,8 @@ class AssignmentsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    assignments: state.assignments
+    assignments: state.assignments,
+    students: state.students
   }
 }
 

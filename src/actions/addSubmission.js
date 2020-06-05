@@ -9,7 +9,7 @@ export const addSubmission = (submission, assignmentId, teacherId) => {
       body: JSON.stringify(submission)
     })
     .then(response => response.json())
-    .then(submission => dispatch({type: 'ADD_SUBMISSION', payload: submission}))
+    .then(assignment => dispatch({type: 'ADD_SUBMISSION', payload: assignment}))
   }
 }
 

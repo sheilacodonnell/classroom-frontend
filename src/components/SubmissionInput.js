@@ -6,7 +6,7 @@ class SubmissionInput extends React.Component {
 
   state = {
     grade: 0,
-    student_id: '',
+    student_id: this.props.student.id,
   }
 
   handleChange = (event) => {
@@ -28,16 +28,20 @@ class SubmissionInput extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <label>Assignment Grade</label>
+          <td>{this.props.student.name}</td>
+          <td>
           <input type="text" value={this.state.grade} name="grade" onChange={this.handleChange}/><br/>
-          <label>Student</label>
-          <input type="text" value={this.state.student_id} name="student_id" onChange={this.handleChange}/><br/>
-
+          </td>
           {/* <select value={this.state.student_id} name="student_id" onChange={this.handleChange}>
-            <option value="1">Harry</option>
-            <option value="2">Ron</option>
+            <option value='' disabled></option>
+              {this.props.students.students.map(student =>
+                <option value={student.id}>{student.name}</option>
+              )}
+
           </select> */}
+          <td>
           <input type="submit" />
+          </td>
         </form>
       </div>
     )
