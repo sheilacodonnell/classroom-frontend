@@ -11,7 +11,8 @@ class SubmissionInput extends React.Component {
 
   handleChange = (event) => {
     this.setState({
-      [event.target.name]: event.target.value
+      grade: event.target.value,
+      student_id: this.props.student.id
     })
   }
 

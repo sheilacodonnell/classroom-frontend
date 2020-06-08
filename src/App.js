@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import AssignmentsContainer from './containers/AssignmentsContainer';
-import StudentsContainer from './containers/StudentsContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import TeachersContainer from './containers/TeachersContainer';
+import Teachers from './components/Teachers'
+
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <StudentsContainer />
-        <AssignmentsContainer />
+
+        <TeachersContainer />
       </div>
     )
   }

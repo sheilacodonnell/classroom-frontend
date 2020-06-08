@@ -17,9 +17,6 @@ const Students = (props) => {
           <td>
           {student.grade_average}
           </td>
-          <td>
-          {student.teacher.name}
-          </td>
         </tr>
       )}
 

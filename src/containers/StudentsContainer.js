@@ -14,10 +14,11 @@ class StudentsContainer extends React.Component {
   render() {
     return(
       <div>
-        <Switch>
+        {/* <Switch> */}
           {/* // returns the first route that matches that path */}
-          <Route path='/students' render={(routerProps) => <Students {...routerProps} students={this.props.students.students}/>} />
-        </Switch>
+          {/* <Route path='/teacher/:teacher_id/students' render={(routerProps) => <Students {...routerProps} students={this.props.students.students}/>} /> */}
+        {/* </Switch> */}
+        <Students students={this.props.students} />
       </div>
     )
   }
@@ -25,7 +26,7 @@ class StudentsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    students: state.students
+    students: state.students.students
   }
 }
 

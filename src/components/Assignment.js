@@ -8,10 +8,8 @@ const Assignment = (props) => {
   return (
     <div>
       <h2>
-        {assignment ? null : <Redirect to='/assignments'/>}
         {assignment ? assignment.title : null} - 
-        {assignment ? assignment.teacher.name : null} - 
-        {assignment ? assignment.due_date : null}
+        Due on {assignment ? assignment.due_date : null}
       </h2>
       <SubmissionsContainer assignment={assignment} students={props.students}/>
     </div>

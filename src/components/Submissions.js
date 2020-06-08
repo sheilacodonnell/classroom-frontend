@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { deleteSubmission } from '../actions/deleteSubmission'
 import SubmissionInput from '../components/SubmissionInput'
 
-
 const Submissions = (props) => {
 
   const student_name = (submission) => {

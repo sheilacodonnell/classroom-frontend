@@ -1,12 +1,12 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 
 const Assignments = (props) => {
   return (
     <div>
      {props.assignments.map(assignment =>
      <li>
-      <Link to={`/assignments/${assignment.id}`}>{assignment.title}</Link>
+      <Link to={`/teachers/${assignment.teacher_id}/assignments/${assignment.id}`}>{assignment.title}</Link>
       </li>)}
     </div>
   )

@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 class AssignmentsContainer extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAssignments()
+    this.props.fetchAssignments(this.props.teacher.id)
   }
 
   render() {
@@ -18,10 +18,9 @@ class AssignmentsContainer extends React.Component {
         <Switch>
           {/* // returns the first route that matches that path */}
           <Route path='/assignments/new' component={AssignmentInput}/>
-          <Route path='/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
-          <Route path='/assignments' render={(routerProps) => <Assignments {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
+          <Route path='/teachers/:teacher_id/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
         </Switch>
-        {/* <AssignmentInput /> */}
+        <Assignments assignments={this.props.assignments.assignments} students={this.props.students}/>
       </div>
     )
   }

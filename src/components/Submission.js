@@ -4,8 +4,6 @@ import { deleteSubmission } from '../actions/deleteSubmission'
 import Submissions from './Submissions';
 
 const Submission = (props) => {
-  debugger;
-
   let complete_student = props.students.find(student => student.id == props.submission.student_id)
 
   // array of Submissions
