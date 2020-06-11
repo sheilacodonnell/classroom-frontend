@@ -1,6 +1,13 @@
 import React from 'react';
 
 const Students = (props) => {
+
+  const students = props.students
+
+  if (!students){
+    return <div>Loading</div>
+  }
+  
   return (
     <div>
      <table>

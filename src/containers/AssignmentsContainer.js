@@ -8,29 +8,27 @@ import { Route, Switch } from 'react-router-dom';
 
 class AssignmentsContainer extends React.Component {
 
-  componentDidMount() {
-    this.props.fetchAssignments(this.props.teacher.id)
-  }
+  // componentDidMount() {
+  //   this.props.fetchAssignments(this.props.teacher.id)
+  // }
 
   render() {
     return(
       <div>
-        <Switch>
           {/* // returns the first route that matches that path */}
-          <Route path='/assignments/new' component={AssignmentInput}/>
-          <Route path='/teachers/:teacher_id/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.assignments.assignments} students={this.props.students}/>} />
-        </Switch>
-        <Assignments assignments={this.props.assignments.assignments} students={this.props.students}/>
+          {/* <Route path='/teachers/:teacher_id/assignments/:id' render={(routerProps) => <Assignment {...routerProps} assignments={this.props.teacher.assignments} students={this.props.teacher.students}/>} /> */}
+          <Route path='/teachers/:teacher_id/assignments/new' component={AssignmentInput}/>
+        <Assignments assignments={this.props.teacher.assignments} students={this.props.teacher.students}/>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    assignments: state.assignments,
-    students: state.students
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     assignments: state.assignments,
+//     students: state.students
+//   }
+// }
 
-export default connect(mapStateToProps, {fetchAssignments})(AssignmentsContainer);
+export default (AssignmentsContainer);

@@ -4,13 +4,13 @@ import { deleteSubmission } from '../actions/deleteSubmission'
 import SubmissionInput from '../components/SubmissionInput'
 
 const Submissions = (props) => {
-
+  
   const student_name = (submission) => {
-    return props.students.students.find(student => student.id == submission.student_id).name
+    return props.students.find(student => student.id == submission.student_id).name
   }
 
   const incompleteStudents = () => {
-    return props.students.students.filter(student => !props.submissions.map(s => s.student_id).includes(student.id))
+    return props.students.filter(student => !props.submissions.map(s => s.student_id).includes(student.id))
   }
 
   const handleDelete = (submission, props) => {

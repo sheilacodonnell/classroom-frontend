@@ -2,8 +2,9 @@ import React from 'react';
 import { fetchTeachers } from '../actions/fetchTeachers'
 import Teachers from '../components/Teachers'
 import TeacherHome from '../components/TeacherHome'
+import AssignmentsContainer from './AssignmentsContainer';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 class TeachersContainer extends React.Component {
 
@@ -14,22 +15,27 @@ class TeachersContainer extends React.Component {
   render() {
     return(
       <div>
-        <Switch>
+      <h1>Current Teachers</h1>
+      {this.props.teachers.map(teacher =>
+        <li key={teacher.id}>
+        <Link to={`/teachers/${teacher.id}`}>{teacher.name}</Link>
+        </li>)}  
+        <div>
           {/* // returns the first route that matches that path */}
+          {/* <Switch>
           <Route path='/teachers/:id' render={(routerProps) => <TeacherHome {...routerProps} teachers={this.props.teachers}/>} />
-          <Route path='/' render={(routerProps) => <Teachers {...routerProps} teachers={this.props.teachers}/>} />
-        </Switch>
-    
+          </Switch> */}
       </div>
+      </div>
+
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     teachers: state.teachers.teachers
   }
 }
 
-export default connect(mapStateToProps, {fetchTeachers})(TeachersContainer);
+export default connect(mapStateToProps, { fetchTeachers })(TeachersContainer);

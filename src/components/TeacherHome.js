@@ -1,23 +1,41 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { fetchTeacher } from '../actions/fetchTeacher'
 import AssignmentsContainer from '../containers/AssignmentsContainer';
 import StudentsContainer from '../containers/StudentsContainer';
 
 import Students from './Students';
 import { Route, Link } from 'react-router-dom';
 
-const TeacherHome = (props) => {
+class TeacherHome extends React.Component {
 
-  let teacher = props.teachers.find(teacher => teacher.id == props.match.params.id)
+  componentWillMount() {
+    this.props.fetchTeacher(this.props.match.params.id)
+  }
 
-  return (
+  render() {
+    const teacher = this.props.teacher
+    const students = this.props.teacher.students
+
+    if (!teacher){
+      return <div>Loading</div>
+    }
+
+    return (
     <div>
-      <h1>{teacher ? teacher.name : null}'s Teacher Portal</h1>
+        <h1>{teacher.name}'s Teacher Portal</h1>
       <h3>Current Assignments</h3>
-      { teacher ? <AssignmentsContainer teacher={teacher} /> : null }
+       <AssignmentsContainer teacher={teacher} students={students} />
       <h3>Current Students</h3>
-      { teacher ? <Students students={teacher.students} teacher={teacher} /> : null }
-    </div>
-  )
+        <Students students={students} />
+      </div>
+    )}      
 }
 
-export default TeacherHome;
+const mapStateToProps = (state) => {
+  return { 
+    teacher: state.teachers.teacher,
+  }
+}
+
+export default connect(mapStateToProps, { fetchTeacher })(TeacherHome);

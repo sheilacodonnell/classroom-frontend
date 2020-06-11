@@ -14,10 +14,7 @@ class StudentsContainer extends React.Component {
   render() {
     return(
       <div>
-        {/* <Switch> */}
-          {/* // returns the first route that matches that path */}
-          {/* <Route path='/teacher/:teacher_id/students' render={(routerProps) => <Students {...routerProps} students={this.props.students.students}/>} /> */}
-        {/* </Switch> */}
+
         <Students students={this.props.students} />
       </div>
     )

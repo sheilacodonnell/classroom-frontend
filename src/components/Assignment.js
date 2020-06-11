@@ -1,19 +1,39 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 import SubmissionsContainer from '../containers/SubmissionsContainer'
+import { fetchAssignment } from '../actions/fetchAssignment'
+import { fetchStudents } from '../actions/fetchStudents'
+import { render } from '@testing-library/react';
 
-const Assignment = (props) => {
-  let assignment = props.assignments.find(assignment => assignment.id == props.match.params.id)
+class Assignment extends React.Component {
 
+  componentWillMount() {
+    this.props.fetchAssignment(this.props.match.params.teacher_id, this.props.match.params.id)
+  }
+  render() {
+
+  const assignment = this.props.assignment
+
+  if (!assignment){
+    return <div>Loading</div>
+  }
   return (
     <div>
       <h2>
-        {assignment ? assignment.title : null} - 
-        Due on {assignment ? assignment.due_date : null}
+        { assignment.title } - 
+        Due on {assignment.due_date }
       </h2>
-      <SubmissionsContainer assignment={assignment} students={props.students}/>
+      <SubmissionsContainer assignment={assignment} students={this.props.students}/>
     </div>
   )
+}}
+
+const mapStateToProps = (state) => {
+  return { 
+    assignment: state.assignments.assignment,
+    students: state.students.students
+  }
 }
 
-export default Assignment;
+export default connect(mapStateToProps, { fetchAssignment })(Assignment);
