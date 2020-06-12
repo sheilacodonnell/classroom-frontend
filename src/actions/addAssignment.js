@@ -1,6 +1,6 @@
-export const addAssignment = (data) => {
+export const addAssignment = (data, teacherId) => {
   return (dispatch) => {
-    fetch('http://localhost:3000/api/teachers/1/assignments', {
+    fetch(`http://localhost:3000/api/teachers/${teacherId}/assignments`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'

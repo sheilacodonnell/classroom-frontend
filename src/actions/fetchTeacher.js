@@ -1,3 +1,5 @@
+import {fetchAssignments} from './fetchAssignments';
+
 export const fetchTeacher = (teacherId) => {
   // this is the action creator which creates an action object
   // what we dispatch is the action object
@@ -13,6 +15,7 @@ export const fetchTeacher = (teacherId) => {
   .then(data => dispatch({
     type: 'FETCH_TEACHER',
     payload: data
-  }))
-  }
-}
+  }),
+  dispatch(fetchAssignments(teacherId, 'FETCH_ASSIGNMENTS')))
+   }
+ }

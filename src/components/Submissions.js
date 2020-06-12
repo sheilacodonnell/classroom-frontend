@@ -4,9 +4,9 @@ import { deleteSubmission } from '../actions/deleteSubmission'
 import SubmissionInput from '../components/SubmissionInput'
 
 const Submissions = (props) => {
-  
-  const student_name = (submission) => {
-    return props.students.find(student => student.id == submission.student_id).name
+
+  const completeStudentName = (submission) => {
+    return props.assignment.students.find(student => student.id == submission.student_id).name
   }
 
   const incompleteStudents = () => {
@@ -30,7 +30,7 @@ const Submissions = (props) => {
         {props.submissions && props.submissions.map(submission =>
         <tr>
           <td>
-            {submission ? student_name(submission) : null}
+            {submission ? completeStudentName(submission) : null}
           </td>
           <td>
             {submission ? submission.grade : null}
@@ -52,7 +52,7 @@ const Submissions = (props) => {
 
         {props.submissions && incompleteStudents().map(student =>
         <tr>
-            <SubmissionInput assignment={props.assignment} student={student}/>
+          <SubmissionInput assignment={props.assignment} student={student}/>
         </tr>
         )}
       </table>

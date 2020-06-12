@@ -7,7 +7,7 @@ class AssignmentInput extends React.Component {
   state = {
     title: '',
     due_date: '',
-    description: ''
+    description: '',
   }
 
   handleChange = (event) => {
@@ -18,11 +18,11 @@ class AssignmentInput extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.addAssignment(this.state)
+    this.props.addAssignment(this.state, this.props.teacher.id)
     this.setState({
       title: '',
       due_date: '',
-      description: ''
+      description: '',
     })
   }
 

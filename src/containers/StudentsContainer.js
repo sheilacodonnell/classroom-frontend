@@ -1,5 +1,4 @@
 import React from 'react';
-import StudentInput from '../components/AssignmentInput';
 import Students from '../components/Students';
 import { fetchStudents } from '../actions/fetchStudents'
 import { connect } from 'react-redux';
