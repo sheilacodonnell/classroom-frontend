@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 const Assignments = (props) => {
   if (!props.assignments){
@@ -23,9 +24,10 @@ const Assignments = (props) => {
 
      {sortedAssignments.map(assignment =>
      <li>
-      <Link to={`/teachers/${assignment.teacher_id}/assignments/${assignment.id}`}>{assignment.title} - {assignment.due_date}</Link>
+      <Link to={`/teachers/${assignment.teacher_id}/assignments/${assignment.id}`}>{assignment.title}</Link>
+      Due on <Moment format="MM/DD/YYYY">{assignment.due_date}</Moment>
       </li>)}
-
+      
     </div>
   )
 }

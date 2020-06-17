@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import SubmissionsContainer from '../containers/SubmissionsContainer'
 import { fetchAssignment } from '../actions/fetchAssignment'
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 class Assignment extends React.Component {
 
@@ -17,9 +19,10 @@ class Assignment extends React.Component {
   }
   return (
     <div>
+      <Link to={`/teachers/${assignment.teacher_id}`}>Return to Teacher Portal</Link>
       <h2>
         { assignment.title } - 
-        Due on {assignment.due_date }
+        Due on <Moment format="MM/DD/YYYY">{assignment.due_date }</Moment>
       </h2>
       <SubmissionsContainer assignment={assignment} students={students}/>
     </div>

@@ -1,36 +1,39 @@
-import React from 'react';
+import React from "react";
+import Table from './Table'
 
-const Students = (props) => {
+class Students extends React.Component {
 
-  const students = props.students
+  render() {
 
-  if (!students){
-    return <div>Loading</div>
-  }
-  
-  return (
-    <div>
-     <table>
-       <thead> 
-         <th>Name</th>
-         <th>Current Grade Average</th>
-       </thead>
-       <tbody>
-       {props.students.map(student =>
-         <tr>
-           <td>
-          {student.name}
-          </td>
-          <td>
-          {student.grade_average}
-          </td>
-        </tr>
-      )}
-
-      </tbody>
-      </table>
-    </div>
-  )
+if (!this.props.students){
+  return <div>Loading</div>
 }
+const data = this.props.students 
 
-export default Students;
+const columns = [
+  {
+    Header: "Name",
+    columns: [
+      {
+        accessor: "name"
+      }
+    ]
+  },
+  {
+    Header: "Current Average",
+    columns: [
+      {
+        accessor: "grade_average"
+      }
+    ]
+  }
+];
+
+return (
+  <div className="App">
+    <Table columns={columns} data={data} />
+  </div>
+)}};
+
+export default Students
+

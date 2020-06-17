@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteSubmission } from '../actions/deleteSubmission'
-import Submissions from './Submissions';
 
 const Submission = (props) => {
+  
   let complete_student = props.students.find(student => student.id == props.submission.student_id)
 
   // array of Submissions

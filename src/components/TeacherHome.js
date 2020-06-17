@@ -8,7 +8,7 @@ import Students from './Students';
 class TeacherHome extends React.Component {
 
   state = {
-    showComponent: false
+    showNewAssignment: false
   }
 
   componentWillMount() {
@@ -18,7 +18,7 @@ class TeacherHome extends React.Component {
   showForm() {
     console.log('this is:', this);
     this.setState({
-      showComponent: true,
+      showNewAssignment: true,
     });
   }
 
@@ -34,9 +34,9 @@ class TeacherHome extends React.Component {
     <div>
       <h1>{teacher.name}'s Teacher Portal</h1>
       <button onClick={() => this.showForm()}>
-        Click me
+        Create Assignment
       </button>
-        {this.state.showComponent ?
+        {this.state.showNewAssignment?
             <AssignmentInput assignments={assignments} teacher={teacher}/> :
             null
           }
